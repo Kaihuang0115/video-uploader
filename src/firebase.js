@@ -3,12 +3,12 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCt09caATL3qRj30CBzQXq339dGlVDLxqo",
-  authDomain: "video-uploader-3fa86.firebaseapp.com",
-  projectId: "video-uploader-3fa86",
-  storageBucket: "video-uploader-3fa86.firebasestorage.app",
-  messagingSenderId: "512965948440",
-  appId: "1:512965948440:web:7aa45aa52c01e7c4617f6d"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
