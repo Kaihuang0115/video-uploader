@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "firebase": "^11.7.3",
+=======
+    "firebase": "^11.8.1",
+>>>>>>> 288b56b (加入 Auth 判斷，只有管理員可上傳/編輯/刪除影片)
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
