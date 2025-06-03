@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-=======
 // src/components/UploadForm.jsx
 import React, { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";         // 新增
->>>>>>> 288b56b (加入 Auth 判斷，只有管理員可上傳/編輯/刪除影片)
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { storage, db } from "../firebase";
@@ -12,8 +8,6 @@ import { storage, db } from "../firebase";
 export default function UploadForm() {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
-<<<<<<< HEAD
-=======
   const [currentUser, setCurrentUser] = useState(null); // 用來存目前登入者
 
   useEffect(() => {
@@ -23,7 +17,6 @@ export default function UploadForm() {
     });
     return () => unsubscribe();
   }, []);
->>>>>>> 288b56b (加入 Auth 判斷，只有管理員可上傳/編輯/刪除影片)
 
   const handleChange = e => {
     const f = e.target.files[0];
@@ -58,8 +51,6 @@ export default function UploadForm() {
     );
   };
 
-<<<<<<< HEAD
-=======
   // 如果尚未登入或 UID 不符合管理員，就顯示提示文字
   if (!currentUser || currentUser.uid !== "QGp2BlVY7FfA7HRytVgLsACwKR13") {
     return (
@@ -70,7 +61,6 @@ export default function UploadForm() {
   }
 
   // 管理員才看得到下面的上傳表單
->>>>>>> 288b56b (加入 Auth 判斷，只有管理員可上傳/編輯/刪除影片)
   return (
     <div className="p-4 border rounded max-w-md mx-auto">
       <input type="file" accept="video/*" onChange={handleChange} />
@@ -84,8 +74,4 @@ export default function UploadForm() {
       {progress > 0 && <p>Uploading: {progress}%</p>}
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 288b56b (加入 Auth 判斷，只有管理員可上傳/編輯/刪除影片)

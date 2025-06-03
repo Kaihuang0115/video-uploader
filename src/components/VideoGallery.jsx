@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-import { collection, query, orderBy, onSnapshot, deleteDoc, doc } from "firebase/firestore";
-=======
 // src/components/VideoGallery.jsx
 import React, { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";            // 新增
@@ -14,21 +10,11 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore";
->>>>>>> 288b56b (加入 Auth 判斷，只有管理員可上傳/編輯/刪除影片)
 import { ref as storageRef, deleteObject } from "firebase/storage";
 import { db, storage } from "../firebase";
 
 export default function VideoGallery() {
   const [videos, setVideos] = useState([]);
-<<<<<<< HEAD
-
-  useEffect(() => {
-    const q = query(collection(db, "videos"), orderBy("createdAt", "desc"));
-    const unsubscribe = onSnapshot(q, snapshot => {
-      setVideos(snapshot.docs.map(d => ({ id: d.id, ...d.data() })));  
-    });
-    return () => unsubscribe();
-=======
   const [editingId, setEditingId] = useState(null);
   const [newName, setNewName] = useState("");
   const [currentUser, setCurrentUser] = useState(null); // 用來存目前登入者
@@ -50,7 +36,6 @@ export default function VideoGallery() {
       unsubscribe();
       unsubAuth();
     };
->>>>>>> 288b56b (加入 Auth 判斷，只有管理員可上傳/編輯/刪除影片)
   }, []);
 
   const handleDelete = async video => {
@@ -65,14 +50,6 @@ export default function VideoGallery() {
     }
   };
 
-<<<<<<< HEAD
-  return (
-    <div className="mt-6 grid grid-cols-2 gap-4 px-4">
-      {videos.length === 0 && <p className="col-span-2 text-center">No highlights yet.</p>}
-      {videos.map(video => (
-        <div key={video.id} className="p-2 border rounded flex flex-col">
-          <p className="font-semibold truncate text-center mb-2">{video.name}</p>
-=======
   const handleEdit = video => {
     setEditingId(video.id);
     setNewName(video.name);
@@ -144,7 +121,6 @@ export default function VideoGallery() {
             </>
           )}
 
->>>>>>> 288b56b (加入 Auth 判斷，只有管理員可上傳/編輯/刪除影片)
           <div className="w-full h-48 overflow-hidden mb-2">
             <video
               src={video.url}
@@ -153,15 +129,6 @@ export default function VideoGallery() {
               className="w-full h-full object-cover rounded"
             />
           </div>
-<<<<<<< HEAD
-          <button
-            type="button"
-            onClick={() => handleDelete(video)}
-            className="mt-auto py-1 bg-red-500 text-white rounded"
-          >
-            Delete
-          </button>
-=======
 
           {/* 只有管理員才會看到刪除按鈕 */}
           {currentUser && currentUser.uid === "QGp2BlVY7FfA7HRytVgLsACwKR13" && (
@@ -173,7 +140,6 @@ export default function VideoGallery() {
               刪除
             </button>
           )}
->>>>>>> 288b56b (加入 Auth 判斷，只有管理員可上傳/編輯/刪除影片)
         </div>
       ))}
     </div>
